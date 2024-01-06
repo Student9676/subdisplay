@@ -1,4 +1,6 @@
-class Subtitle {
+package util;
+
+public class Subtitle {
 
     private int number;
     private String startTime;
@@ -6,7 +8,7 @@ class Subtitle {
     private String text;
     private String timeDuration;
     
-    public Subtitle(number, startTime, endTime, text) {
+    public Subtitle(int number, String startTime, String endTime, String text) {
 	this.number = number;
 	this.startTime = startTime;
 	this.endTime = endTime;
@@ -15,8 +17,7 @@ class Subtitle {
 
     @Override
     public String toString() {
-	String str = null;
-	str = this.number + "\n" + this.startTime + " --> " + this.endTime + "\n" + this.text;
+	return this.number + "\n" + this.startTime + " --> " + this.endTime + "\n" + this.text;
     }
     
     public int getNumber() {

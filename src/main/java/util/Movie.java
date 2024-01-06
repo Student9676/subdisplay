@@ -1,17 +1,19 @@
 package util;
+
+import java.util.ArrayList;
 import util.Subtitle;
 
 
-class Movie {
+public class Movie {
     ArrayList<Subtitle> parsedSubtitles = new ArrayList<>();
     ArrayList<String> rawSubtitles = new ArrayList<>();
     
-    public Subtitles() {
+    public Movie() {
 	this.parsedSubtitles = null;
 	this.rawSubtitles = null;
     }
     
-    public Subtitles(ArrayList<Subtitle> parsedSubtitles, ArrayList<String> rawSubtitles) {
+    public Movie(ArrayList<Subtitle> parsedSubtitles, ArrayList<String> rawSubtitles) {
 	this.parsedSubtitles = parsedSubtitles;
 	this.rawSubtitles = rawSubtitles;
     }
@@ -27,23 +29,23 @@ class Movie {
     @Override
     public String toString() {
 	String str = "";
-	for (i = 0; i < this.parsedSubtitles.length; i++) {
-	    str += this.parsedSubtitles[i];
+	for (int i = 0; i < this.parsedSubtitles.size(); i++) {
+	    str += this.rawSubtitles.get(i);
 	}
 	return str;
     }
 
     public void add(Subtitle sub) {
 	this.parsedSubtitles.add(sub);
-	this.rawSubtitles.add(sub.toString())
+	this.rawSubtitles.add(sub.toString());
     }
     public void add(int index, Subtitle sub) {
 	this.parsedSubtitles.add(index, sub);
-	this.rawSubtitles.add(index, sub.toString())
+	this.rawSubtitles.add(index, sub.toString());
     }
-    public void add(Subtitle[][] subs) {
-	for (int i = 0; i < subs.length; i++) {
-	    this.add(subs[i]);
+    public void add(ArrayList<Subtitle> subs) {
+	for (int i = 0; i < subs.size(); i++) {
+	    this.add(subs.get(i));
 	}
     }    
 
