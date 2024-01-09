@@ -33,10 +33,10 @@ class SrtParser {
     /*
      * 22
      * 00:03:56,361 --> 00:03:58,321
-     * Directοr οf Phοtοgraphy
-     * Nοbuο Kοyama
-     * Sοund Design
-     * Υasuο Urakami
+     * line 1
+     * line 2
+     * line 3
+     * line 4
      */
     private static Subtitle parseSub(String subString) {
 	Subtitle sub = new Subtitle();
@@ -46,8 +46,12 @@ class SrtParser {
 	sub.setStartTime(times[0]);
 	sub.setEndTime(times[1]);
 	String text = "";
-	for (int i = 2; i < subLines.length; i++) {
-	    text += subLines[i] + System.lineSeparator();
+	for (int i = 2; i < subLines.length; i++) {                                                                                               
+            if (i == subLines.length - 1) {
+                text += subLines[i];
+            } else {
+                text += subLines[i] + System.lineSeparator();
+            }
 	}
 	sub.setText(text);
 	return sub;
