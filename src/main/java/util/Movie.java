@@ -5,14 +5,13 @@ import util.Subtitle;
 
 
 public class Movie {
-    ArrayList<Subtitle> parsedSubtitles = new ArrayList<>();
-    ArrayList<String> rawSubtitles = new ArrayList<>();
+    private ArrayList<Subtitle> parsedSubtitles = new ArrayList<>();
+    private ArrayList<String> rawSubtitles = new ArrayList<>();
     
     public Movie() {
 	this.parsedSubtitles = null;
 	this.rawSubtitles = null;
     }
-    
     public Movie(ArrayList<Subtitle> parsedSubtitles, ArrayList<String> rawSubtitles) {
 	this.parsedSubtitles = parsedSubtitles;
 	this.rawSubtitles = rawSubtitles;
@@ -21,9 +20,15 @@ public class Movie {
     public ArrayList<Subtitle> getParsedSubtitles() {
 	return this.parsedSubtitles;
     }
-
     public ArrayList<String> getStringSubtitles() {
 	return this.rawSubtitles;
+    }
+    
+    public void setStringSubtitles(ArrayList<String> al) {
+	this.rawSubtitles = al;
+    }
+    public void setParsedSubtitles(ArrayList<Subtitle> al) {
+	this.parsedSubtitles = al;
     }
 
     @Override
