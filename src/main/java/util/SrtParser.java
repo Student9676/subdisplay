@@ -1,3 +1,5 @@
+package util;
+
 import util.Subtitle;
 import util.Movie;
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.Arrays;
 
 class SrtParser {
     public static Movie parse (String srtPath) {
-	Movie movie = null;
+	Movie movie = new Movie();
 	
 	File file = new File(srtPath);
 	Scanner scanner = null;
@@ -27,6 +29,8 @@ class SrtParser {
         ArrayList<String> rawSubtitles = new ArrayList<>(Arrays.asList(srt.split(System.lineSeparator() + System.lineSeparator())));
 	movie.setStringSubtitles(rawSubtitles);
 
+	movie.setParsedSubtitles(parseSubs(rawSubtitles));
+	
 	return movie;
     }
 
@@ -55,5 +59,12 @@ class SrtParser {
 	}
 	sub.setText(text);
 	return sub;
+    }
+    private static ArrayList<Subtitle> parseSubs(ArrayList<String> rawSubtitles) {
+	ArrayList<Subtitle> parsedSubtitles = new ArrayList<>();
+	for (int i = 0; i < rawSubtitles.size(); i++) {
+	    parsedSubtitles.add(parseSub(rawSubtitles.get(i)));
+	}
+	return parsedSubtitles;
     }
 }

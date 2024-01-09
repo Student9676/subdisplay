@@ -6,11 +6,11 @@ public class Subtitle {
     private String startTime;
     private String endTime;
     private String text;
-    private String timeDuration;
+    private String duration;
     
     public Subtitle() {
 	this.number = 0;
-	this.startTime = this.endTime = this.text = this.timeDuration = null;
+	this.startTime = this.endTime = this.text = this.duration = null;
     }
     
     public Subtitle(int number, String startTime, String endTime, String text) {

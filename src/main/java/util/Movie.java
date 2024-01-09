@@ -60,7 +60,7 @@ public class Movie {
     }
     public void remove(Subtitle sub) {
 	this.parsedSubtitles.remove(sub);
-	this.rawSubtitles.remove(sub);
+	this.rawSubtitles.remove(sub.getText());
     }
 
     public int subSize() {

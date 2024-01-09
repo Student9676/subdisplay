@@ -8,7 +8,6 @@ public class SubDisplay {
 
     public static void main(String[] args) {
 
-	boolean invalidInput = true;
 	Scanner scanner = new Scanner(System.in);
 	
 	while (true) {
@@ -22,7 +21,7 @@ public class SubDisplay {
 
 	// Need parser
 	
-	
+	scanner.close();
     }
 
     public static boolean check_input(String srtFilePath) {
