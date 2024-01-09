@@ -17,3 +17,7 @@ buildNumber.properties
 .classpath
 
 *.srt
+
+target
+pom.xml
+.gitignore
