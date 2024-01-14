@@ -19,7 +19,7 @@ public class Subtitle {
 	this.startTime = this.parseTime(startTime);
 	this.endTime = this.parseTime(endTime);
 	this.duration = this.endTime - this.startTime;
-	this.text = text;
+	this.text = text.trim();
     }
 
     @Override
@@ -53,7 +53,7 @@ public class Subtitle {
 	this.endTime = this.parseTime(time);
     }
     public void setText(String text) {
-	this.text = text;
+	this.text = text.trim();
     }
 
     private long parseTime(String timeStr) {

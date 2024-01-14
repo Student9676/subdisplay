@@ -21,24 +21,29 @@ public class SubDisplay {
 	    System.out.flush();
 	    srtPath = scanner.nextLine();
 	    if (check_input(srtPath)) {
-		break;
+		    break;
 	    }
 	}
-	scanner.close();
 
 	Movie movie = SrtParser.parse(srtPath); 
 	ArrayList<String> strSubs = movie.getStringSubtitles();
 	ArrayList<Subtitle> parsedSubs = movie.getParsedSubtitles();
-	Timer timer = new Timer();
-	ArrayList<TimerTask> tasks = new ArrayList<>();
-
-        for (int i = 0; i < strSubs.size(); i++) {
+	ArrayList<TimerTask> tasks = new ArrayList<>(); 
+	
+    System.out.println("Press Enter to start the subtitles");
+    System.out.flush();
+    scanner.nextLine();
+    scanner.close();
+    
+    Timer timer = new Timer();
+	
+    for (int i = 0; i < strSubs.size(); i++) {
 	    final int index = i;
 	    tasks.add(new TimerTask() {
 	        @Override
 	        public void run() {
-		    System.out.println(strSubs.get(index) + "\n");
-		}
+		    System.out.println(strSubs.get(index) + "\n");  
+		    }
 	    });
 
 	    timer.schedule(tasks.get(i), parsedSubs.get(i).getStartTime());

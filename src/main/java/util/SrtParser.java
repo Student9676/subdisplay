@@ -24,11 +24,11 @@ public class SrtParser {
     while (scanner.hasNextLine()) {
         srt += scanner.nextLine() + System.lineSeparator();
     }
-    System.out.println(srt);
     scanner.close();
 
     ArrayList<String> rawSubtitles = new ArrayList<>(Arrays.asList(srt.split(System.lineSeparator() + System.lineSeparator())));
-	movie.setStringSubtitles(rawSubtitles);
+	rawSubtitles.replaceAll(String::trim);
+    movie.setStringSubtitles(rawSubtitles);
 
 	movie.setParsedSubtitles(parseSubs(rawSubtitles));
 	
