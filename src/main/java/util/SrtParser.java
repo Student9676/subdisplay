@@ -1,7 +1,5 @@
 package util;
 
-import util.Subtitle;
-import util.Movie;
 import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;

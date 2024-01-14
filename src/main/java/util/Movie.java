@@ -1,8 +1,6 @@
 package util;
 
 import java.util.ArrayList;
-import util.Subtitle;
-
 
 public class Movie {
     private ArrayList<Subtitle> parsedSubtitles = new ArrayList<>();

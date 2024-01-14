@@ -11,8 +11,7 @@ import util.Movie;
 import util.Subtitle;
 
 public class SubDisplay {
-
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
 	Scanner scanner = new Scanner(System.in);
 	String srtPath;
@@ -30,37 +29,43 @@ public class SubDisplay {
 	ArrayList<Subtitle> parsedSubs = movie.getParsedSubtitles();
 	ArrayList<TimerTask> tasks = new ArrayList<>(); 
 	
-    System.out.println("Press Enter to start the subtitles");
-    System.out.flush();
-    scanner.nextLine();
-    scanner.close();
-    
-    Timer timer = new Timer();
+	System.out.println("Press Enter to start the subtitles");
+	System.out.flush();
+	scanner.nextLine();
+	scanner.close();
+	for (int k = 0; k < 4; k++) {
+	    deleteln();
+	}
 	
-    for (int i = 0; i < strSubs.size(); i++) {
+	Timer timer = new Timer();
+	
+	for (int i = 0; i < strSubs.size(); i++) {
 	    final int index = i;
 	    tasks.add(new TimerTask() {
-	        @Override
-	        public void run() {
-		    System.out.println(strSubs.get(index) + "\n");  
+		    @Override
+		    public void run() {
+			if (index > 0) {
+			    for (int j = 0; j < strSubs.get(index-1).lines().count(); j++) {
+				    deleteln();
+			    }
+                         } 
+			System.out.println(strSubs.get(index));  
 		    }
-	    });
-
+		});
 	    timer.schedule(tasks.get(i), parsedSubs.get(i).getStartTime());
 	}
 
 	TimerTask cancelTask = new TimerTask() {
-	    @Override
-	    public void run() {
-		timer.purge();
-		timer.cancel();
-	    }
+		@Override
+		public void run() {
+		    timer.purge();
+		    timer.cancel();
+		}
 	};
-	timer.schedule(cancelTask, parsedSubs.get(parsedSubs.size() - 1).getEndTime() + 2000);
-	    
+    timer.schedule(cancelTask, parsedSubs.get(parsedSubs.size() - 1).getEndTime() + 2000);
     }
 
-    public static boolean check_input(String srtFilePath) {
+    private static boolean check_input(String srtFilePath) {
 	try {
 	    if (!srtFilePath.contains(".srt")) {
 		return false;
@@ -71,6 +76,9 @@ public class SubDisplay {
             return false;
         }
     }
-    
 
+    private static void deleteln() {
+        System.out.print("\u001B[1A");
+        System.out.print("\u001B[2K");
+    }
 }
