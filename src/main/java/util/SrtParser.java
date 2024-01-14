@@ -9,24 +9,25 @@ import java.util.Scanner;
 import java.util.Arrays;
 
 
-class SrtParser {
+public class SrtParser {
     public static Movie parse (String srtPath) {
 	Movie movie = new Movie();
 	
 	File file = new File(srtPath);
 	Scanner scanner = null;
-        try {
-            scanner = new Scanner(file);
-        } catch (FileNotFoundException e){
-            return null;
-        }
-        String srt = "";
-        while (scanner.hasNextLine()) {
-            srt += scanner.nextLine() + System.lineSeparator();
-        }
-        scanner.close();
-	
-        ArrayList<String> rawSubtitles = new ArrayList<>(Arrays.asList(srt.split(System.lineSeparator() + System.lineSeparator())));
+    try {
+        scanner = new Scanner(file);
+    } catch (FileNotFoundException e){
+        return null;
+    }
+    String srt = "";
+    while (scanner.hasNextLine()) {
+        srt += scanner.nextLine() + System.lineSeparator();
+    }
+    System.out.println(srt);
+    scanner.close();
+
+    ArrayList<String> rawSubtitles = new ArrayList<>(Arrays.asList(srt.split(System.lineSeparator() + System.lineSeparator())));
 	movie.setStringSubtitles(rawSubtitles);
 
 	movie.setParsedSubtitles(parseSubs(rawSubtitles));
@@ -34,14 +35,6 @@ class SrtParser {
 	return movie;
     }
 
-    /*
-     * 22
-     * 00:03:56,361 --> 00:03:58,321
-     * line 1
-     * line 2
-     * line 3
-     * line 4
-     */
     private static Subtitle parseSub(String subString) {
 	Subtitle sub = new Subtitle();
 	String[] subLines = subString.split(System.lineSeparator());

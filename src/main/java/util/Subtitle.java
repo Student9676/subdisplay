@@ -60,8 +60,11 @@ public class Subtitle {
 	String[] timeVals = timeStr.split(":");
 	long hours = Long.parseLong(timeVals[0]);
 	long minutes = Long.parseLong(timeVals[1]);
-	long seconds = Long.parseLong(timeVals[2].split(",")[0]);
-	long millisecs = Long.parseLong(timeVals[2].split(",")[1]);
+    long seconds = Long.parseLong(timeVals[2].split(",")[0]);
+    long millisecs = 0;
+    if (timeVals[2].split(",").length == 2) {
+    	millisecs = Long.parseLong(timeVals[2].split(",")[1]);
+    }
 
 	return (hours * 3600000) + (minutes * 60000) + (seconds * 1000) + millisecs; 
     }
