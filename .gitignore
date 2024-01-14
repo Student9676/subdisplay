@@ -21,3 +21,5 @@ buildNumber.properties
 target
 pom.xml
 .gitignore
+
+.vscode
