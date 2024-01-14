@@ -56,12 +56,15 @@ public class SubDisplay {
 		timer.cancel();
 	    }
 	};
-	timer.schedule(cancelTask, parsedSubs.get(parsedSubs.size() - 1).getEndTime() + 3000);
+	timer.schedule(cancelTask, parsedSubs.get(parsedSubs.size() - 1).getEndTime() + 2000);
 	    
     }
 
     public static boolean check_input(String srtFilePath) {
 	try {
+	    if (!srtFilePath.contains(".srt")) {
+		return false;
+	    }
             Path filePath = Paths.get(srtFilePath);
             return filePath.toFile().isFile();
         } catch (Exception e) {
